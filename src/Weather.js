@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { ThreeCircles } from "react-loader-spinner";
+import Loader from "./Loader";
 import "./Weather.css";
 
 export default function Weather() {
-  const [city, setCity] = useState(" ");
+  const [city, setCity] = useState("Barcelona");
   const [loaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
   function showTemperature(response) {
@@ -82,22 +82,7 @@ export default function Weather() {
       <div>
         {form}
         <br />
-        <div className="container">
-          <div className="row">
-            <div className="col-4"></div>
-            <div className="col-4">
-              <ThreeCircles
-                color="#ff7ac6"
-                innerCircleColor="#f1fb8c"
-                outerCircleColor="#b891f3"
-                height={210}
-                width={210}
-                ariaLabel="three-circles-rotating"
-              />
-            </div>
-            <div className="col-4"></div>
-          </div>
-        </div>
+        <Loader />
       </div>
     );
   }
