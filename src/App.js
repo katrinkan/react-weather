@@ -1,22 +1,19 @@
 import Weather from "./Weather";
-
-import { ThreeCircles } from "react-loader-spinner";
+import Footer from "./Footer";
+import Container from "react-bootstrap/Container";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Weather />
-
-        <ThreeCircles
-          color="blueviolet"
-          innerCircleColor="yellow"
-          height={110}
-          width={110}
-          ariaLabel="three-circles-rotating"
-        />
-      </header>
+      <Container>
+        <div className="themes-weather-wrapper">
+          <div className="themes-weather">
+            <Weather />
+          </div>
+          <Footer />
+        </div>
+      </Container>
     </div>
   );
 }
