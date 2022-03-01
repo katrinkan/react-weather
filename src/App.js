@@ -1,4 +1,5 @@
 import Weather from "./Weather";
+
 import { ThreeCircles } from "react-loader-spinner";
 import "./App.css";
 
@@ -6,8 +7,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Hello World</h1>
-        <Weather city="Barcelona" />
+        <Weather />
+
         <ThreeCircles
           color="blueviolet"
           innerCircleColor="yellow"
