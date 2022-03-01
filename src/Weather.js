@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { ThreeCircles } from "react-loader-spinner";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import "./Weather.css";
 
 export default function Weather() {
@@ -33,22 +30,21 @@ export default function Weather() {
     setCity(event.target.value);
   }
   let form = (
-    <Container>
-      <Row>
-        <form onSubmit={handleSubmit}>
-          <Col>
-            <input
-              type="search"
-              placeholder="Type a city..."
-              onChange={updateCity}
-            />
-          </Col>
-          <Col>
-            <input type="submit" value="Search" />
-          </Col>
-        </form>
-      </Row>
-    </Container>
+    <form onSubmit={handleSubmit}>
+      <div className="row">
+        <div className="col-10">
+          <input
+            type="search"
+            placeholder="Type a city..."
+            className="form-control"
+            onChange={updateCity}
+          />
+        </div>
+        <div className="col-2">
+          <input type="submit" value="Search" className="btn btn-primary" />
+        </div>
+      </div>
+    </form>
   );
 
   if (loaded) {
@@ -56,36 +52,51 @@ export default function Weather() {
       <div className="Weather">
         {form}
         <h1>{city}</h1>
-        <ul>
+        <ul className="overview">
           <li>
             Last updated:<span>Tuesday 10:25</span>
           </li>
           <li>{weather.description}</li>
         </ul>
-        <div>
-          <img src={weather.icon} alt="Weather icon" />
-          <strong>{Math.round(weather.temperature)}°C</strong>
+        <div className="row">
+          <div className="col-6">
+            <img src={weather.icon} alt="Weather icon" className="float-left" />
+            <strong>
+              {Math.round(weather.temperature)}
+              <span className="unit">°C</span>
+            </strong>
+          </div>
+
+          <div className="col-6">
+            <ul className="infos">
+              <li>Feels like: {Math.round(weather.feels)}°C</li>
+              <li>Humidity: {weather.humidity}%</li>
+              <li>Wind: {Math.round(weather.wind)} km/h</li>
+            </ul>
+          </div>
         </div>
-        <ul>
-          <li>Feels like: {Math.round(weather.feels)}</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>Wind: {Math.round(weather.wind)} km/h</li>
-        </ul>
       </div>
     );
   } else {
     return (
       <div>
         {form}
-        <div className="loader">
-          <ThreeCircles
-            color="#ff7ac6"
-            innerCircleColor="#f1fb8c"
-            outerCircleColor="#b891f3"
-            height={110}
-            width={110}
-            ariaLabel="three-circles-rotating"
-          />
+        <br />
+        <div className="container">
+          <div className="row">
+            <div className="col-4"></div>
+            <div className="col-4">
+              <ThreeCircles
+                color="#ff7ac6"
+                innerCircleColor="#f1fb8c"
+                outerCircleColor="#b891f3"
+                height={210}
+                width={210}
+                ariaLabel="three-circles-rotating"
+              />
+            </div>
+            <div className="col-4"></div>
+          </div>
         </div>
       </div>
     );
