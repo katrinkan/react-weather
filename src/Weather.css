@@ -45,3 +45,11 @@
 .Weather .infos {
   padding-left: 20px;
 }
+.Weather .btn-custom {
+  background-color: #b891f3;
+  border: #b891f3;
+  color: #e8e8e3;
+}
+.Weather .btn-custom:hover {
+  background-color: #49ce6d;
+}

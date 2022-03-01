@@ -4,7 +4,7 @@ import Loader from "./Loader";
 import "./Weather.css";
 
 export default function Weather() {
-  const [city, setCity] = useState("Barcelona");
+  const [city, setCity] = useState(" ");
   const [loaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
   function showTemperature(response) {
@@ -41,7 +41,11 @@ export default function Weather() {
           />
         </div>
         <div className="col-2">
-          <input type="submit" value="Search" className="btn btn-primary" />
+          <input
+            type="submit"
+            value="Search"
+            className="btn btn-primary btn-custom"
+          />
         </div>
       </div>
     </form>
